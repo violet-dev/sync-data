@@ -1,0 +1,33 @@
+name: Sync Chunk Job
+
+on:
+  schedule:
+    - cron: "0 */1 * * *"
+  workflow_dispatch:
+
+jobs:
+  sched-job-0:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          ref: master
+      - uses: actions/setup-python@v2
+        with:
+          python-version: '3.8'
+      - name: A
+        run: |
+          chmod 777 hsync
+          wget https://github.com/violet-dev/db/releases/download/20210924/data.db
+          python3 sync.py ${{ secrets.GITHUB_TOKEN }}
+      - name: Revision
+        run: |
+          git add .
+          git commit -m "update job"
+          git pull
+      - name: Push
+        id: trypush
+        uses: ad-m/github-push-action@master
+        with:
+          branch: 'master'
+          github_token: $
