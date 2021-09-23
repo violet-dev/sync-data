@@ -17,7 +17,7 @@ def sync():
   #   Sync (Low Performance Starting)
   #
   shutil.rmtree('chunk', ignore_errors=True)
-  process = Popen(['./hsynce', '-ls', '--sync-only'])
+  process = Popen(['./hsync', '-ls', '--sync-only'])
   process.wait()
 
 def upload_chunk():
@@ -56,7 +56,7 @@ def release():
   #
   #   Create database
   #
-  process = Popen(['./hsynce', '-lc'])
+  process = Popen(['./hsync', '-lc'])
   process.wait()
 
   #
