@@ -16,7 +16,7 @@ jobs:
         with:
           python-version: '3.8'
       - name: 'Get Previous tag'
-        id: previoustag
+        id: sync-chunk
         uses: "WyriHaximus/github-action-get-previous-tag@v1"
       - name: A
         run: |
