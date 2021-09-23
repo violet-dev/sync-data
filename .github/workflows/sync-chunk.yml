@@ -15,10 +15,13 @@ jobs:
       - uses: actions/setup-python@v2
         with:
           python-version: '3.8'
+      - name: 'Get Previous tag'
+        id: previoustag
+        uses: "WyriHaximus/github-action-get-previous-tag@v1"
       - name: A
         run: |
           chmod 777 hsync
-          wget https://github.com/violet-dev/db/releases/download/20210924/data.db
+          wget https://github.com/violet-dev/db/releases/download/${{ steps.previoustag.outputs.tag }}/data.db
           python3 sync.py ${{ secrets.GITHUB_TOKEN }}
       - name: Revision
         run: |
