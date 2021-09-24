@@ -154,5 +154,6 @@ def upload_db():
     
 sync()
 upload_chunk()
+upload_db()
 clean()
 #release()
