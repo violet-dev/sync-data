@@ -26,7 +26,7 @@ jobs:
           npm install -g github-release-cli
           chmod 777 hsync
           wget https://github.com/violet-dev/db/releases/download/${{ steps.previoustag.outputs.tag }}/data.db
-          python3 sync-chunk.py ${{ secrets.GITHUB_TOKEN }}
+          python3 sync-chunk.py ${{ secrets.TOKEN }}
       - name: Revision
         run: |
           git add .
