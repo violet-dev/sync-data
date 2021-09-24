@@ -24,6 +24,7 @@ jobs:
         run: |
           npm install -g @babel/runtime 
           npm install -g github-release-cli
+          sudo apt-get install p7zip
           chmod 777 hsync
           wget https://github.com/violet-dev/db/releases/download/${{ steps.previoustag.outputs.tag }}/data.db
           python3 sync-chunk.py ${{ secrets.TOKEN }}
