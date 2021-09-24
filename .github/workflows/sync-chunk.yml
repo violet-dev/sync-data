@@ -30,6 +30,8 @@ jobs:
           python3 sync-chunk.py ${{ secrets.TOKEN }}
       - name: Revision
         run: |
+          git config --local user.email "violet.dev.master@gmail.com"
+          git config --local user.name "violet-dev"
           git add .
           git commit -m "update job"
           git pull
