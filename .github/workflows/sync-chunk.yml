@@ -22,7 +22,7 @@ jobs:
         uses: "WyriHaximus/github-action-get-previous-tag@v1"
       - name: A
         run: |
-          npm install -g node-github-release
+          npm install -g github-release-cli
           chmod 777 hsync
           wget https://github.com/violet-dev/db/releases/download/${{ steps.previoustag.outputs.tag }}/data.db
           python3 sync-chunk.py ${{ secrets.GITHUB_TOKEN }}
