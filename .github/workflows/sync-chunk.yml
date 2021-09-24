@@ -32,7 +32,7 @@ jobs:
         run: |
           git config --local user.email "violet.dev.master@gmail.com"
           git config --local user.name "violet-dev"
-          git add .
+          git add syncversion.txt
           git commit -m "update job"
           git pull
       - name: Push
