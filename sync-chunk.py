@@ -50,7 +50,7 @@ def upload_chunk():
 
   url = 'https://github.com/violet-dev/chunk/releases/download/'+timestamp+'/'+filename2
   with open(dbmetapath, "a") as myfile:
-    myfile.write('chunkraw ' + timestamp + ' ' + url + ' ' + str(size2) + '\n')
+    myfile.write('chunk ' + timestamp + ' ' + url + ' ' + str(size2) + '\n')
   
 def release():
   #
