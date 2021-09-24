@@ -1,0 +1,43 @@
+name: Sync Database Job
+
+on:
+  schedule:
+    - cron: "0 0 */1 * *"
+  workflow_dispatch:
+
+jobs:
+  sched-job-0:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          ref: master
+          fetch-depth: 0 #
+      - uses: actions/setup-python@v2
+        with:
+          python-version: '3.8'
+      - uses: actions/setup-node@v2
+      - name: 'Get Previous tag'
+        id: previoustag
+        uses: "WyriHaximus/github-action-get-previous-tag@v1"
+      - name: A
+        run: |
+          npm install -g @babel/runtime 
+          npm install -g github-release-cli
+          sudo apt-get install p7zip
+          chmod 777 hsync
+          wget https://github.com/violet-dev/db/releases/download/${{ steps.previoustag.outputs.tag }}/data.db
+          python3 sync-db.py ${{ secrets.TOKEN }}
+      - name: Revision
+        run: |
+          git config --local user.email "violet.dev.master@gmail.com"
+          git config --local user.name "violet-dev"
+          git add syncversion.txt
+          git commit -m "update job"
+          git pull
+      - name: Push
+        id: trypush
+        uses: ad-m/github-push-action@master
+        with:
+          branch: 'master'
+          github_token: $
