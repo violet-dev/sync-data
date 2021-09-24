@@ -135,12 +135,24 @@ def clean():
   remove_exists('rawdata-japanese.7z')
   remove_exists('rawdata-korean.7z')
 
-latest_sync_date = ''
+def upload_db():
+  # donot use utcnow()
+  timestamp = str(int(datetime.now().timestamp()))
 
-print(str(int(datetime.now().timestamp())))
-
+  process = Popen(['github-release',
+    'upload', 
+    '--owner=violet-dev',
+    '--repo=sync-data',
+    '--tag=db_' + timestamp,
+    '--release-name=db_' + timestamp,
+    '--body=""',
+    '--prerelease=false',
+    '--token=' + token,
+    'data.db',
+  ])
+  process.wait()
+    
 sync()
 upload_chunk()
-cur_date = datetime.utcnow().strftime('%Y.%m.%d')
 clean()
-release()
+#release()
