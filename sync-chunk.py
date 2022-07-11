@@ -17,7 +17,7 @@ def sync():
   #   Sync (Low Performance Starting)
   #
   shutil.rmtree('chunk', ignore_errors=True)
-  process = Popen(['./hsync', '-ls', '--sync-only'])
+  process = Popen(['./hsync', '-ls', '--sync-only', '--hitomi-sync-lookup-range', '50000', '--exhentai-lookup-page', '1'])
   process.wait()
 
 def upload_chunk():
