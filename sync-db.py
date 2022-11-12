@@ -17,7 +17,7 @@ def sync():
   #   Sync (Low Performance Starting)
   #
   shutil.rmtree('chunk', ignore_errors=True)
-  process = Popen(['./hsync', '-ls', '--sync-only'])
+  process = Popen(['./hsync', '-ls', '--sync-only', '--sync-only-hitomi'])
   process.wait()
 
 def release():
