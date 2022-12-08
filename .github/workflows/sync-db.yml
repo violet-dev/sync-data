@@ -30,8 +30,8 @@ jobs:
           python3 sync-db.py ${{ secrets.TOKEN }}
       - name: Revision
         run: |
-          git config --local user.email "violet.dev.master@gmail.com"
-          git config --local user.name "violet-dev"
+          git config --local user.email "violet.dev.master.bot@gmail.com"
+          git config --local user.name "violet-dev-bot"
           git config --global pull.rebase false
           git add syncversion.txt
           git commit -m "update job"
