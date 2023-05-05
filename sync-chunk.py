@@ -43,6 +43,32 @@ def upload_chunk():
     chunkfile2,
   ])
   process.wait()
+  process = Popen(['github-release',
+    'upload', 
+    '--owner=violet-dev',
+    '--repo=chunk',
+    '--tag=' + timestamp,
+    '--release-name=chunk ' + timestamp + '',
+    '--body=""',
+    '--prerelease=false',
+    '--token=' + token,
+    chunkfile1,
+    chunkfile2,
+  ])
+  process.wait()
+  process = Popen(['github-release',
+    'upload', 
+    '--owner=violet-dev',
+    '--repo=chunk',
+    '--tag=' + timestamp,
+    '--release-name=chunk ' + timestamp + '',
+    '--body=""',
+    '--prerelease=false',
+    '--token=' + token,
+    chunkfile1,
+    chunkfile2,
+  ])
+  process.wait()
 
   url = 'https://github.com/violet-dev/chunk/releases/download/'+timestamp+'/'+filename1
   with open(dbmetapath, "a") as myfile:
