@@ -63,7 +63,7 @@ jobs:
       - name: Noti
         uses: sarisia/actions-status-discord@v1
         with:
-          webhook:  ${{ secrets.DISCORD_WEBHOK }}
+          webhook:  ${{ secrets.DISCORD_WEBHOOK }}
           color: 0x28e1ff
           nodetail: true
           description: |
