@@ -9,17 +9,27 @@ jobs:
   sched-job-0:
     runs-on: ubuntu-latest
     steps:
+    
       - uses: actions/checkout@v2
         with:
           ref: master
           fetch-depth: 0 #
+          
       - uses: actions/setup-python@v2
         with:
           python-version: '3.8'
+          
       - uses: actions/setup-node@v2
+      
+      - id: beforechunk
+        uses: pozetroninc/github-action-get-latest-release@master
+        with:
+          repository: project-violet/chunk
+        
       - name: 'Get Previous tag'
         id: previoustag
         uses: "WyriHaximus/github-action-get-previous-tag@v1"
+        
       - name: A
         run: |
           npm install -g @babel/runtime 
@@ -28,6 +38,7 @@ jobs:
           chmod 777 hsync
           wget https://github.com/violet-dev/sync-data/releases/download/${{ steps.previoustag.outputs.tag }}/data.db
           python3 sync-chunk.py ${{ secrets.TOKEN }}
+          
       - name: Revision
         run: |
           git config --local user.email "violet.dev.master.bot@gmail.com"
@@ -36,9 +47,25 @@ jobs:
           git add syncversion.txt
           git commit -m "update job"
           git pull
+          
       - name: Push
         id: trypush
         uses: ad-m/github-push-action@master
         with:
           branch: 'master'
           github_token: $
+
+      - id: afterchunk
+        uses: pozetroninc/github-action-get-latest-release@master
+        with:
+          repository: project-violet/chunk
+        
+      - name: Noti
+        uses: sarisia/actions-status-discord@v1
+        with:
+          webhook:  ${{ secrets.DISCORD_WEBHOK }}
+          color: 0x28e1ff
+          nodetail: true
+          description: |
+            Chunk Update
+            Post: ${{ steps.beforechunk.outputs.release }}, Pre: ${{ steps.afterchunk.outputs.release }}
