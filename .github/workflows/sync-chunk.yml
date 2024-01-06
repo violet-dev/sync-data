@@ -60,7 +60,8 @@ jobs:
         with:
           repository: project-violet/chunk
         
-      - name: Noti
+      - name: Noti Success
+        if: success()
         uses: sarisia/actions-status-discord@v1
         with:
           webhook:  ${{ secrets.DISCORD_WEBHOOK }}
@@ -69,3 +70,15 @@ jobs:
           description: |
             Chunk Update
             Post: ${{ steps.beforechunk.outputs.release }}, Pre: ${{ steps.afterchunk.outputs.release }}
+
+      - name: Noti Fail
+        if: failure()
+        uses: sarisia/actions-status-discord@v1
+        with:
+          webhook:  ${{ secrets.DISCORD_WEBHOOK }}
+          color: 0x28e1ff
+          nodetail: true
+          color: 0xff9300
+          description: |
+            Chunk Update Fail @koromo
+            Post: ${{ steps.beforechunk.outputs.release }}
