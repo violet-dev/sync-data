@@ -12,7 +12,6 @@ jobs:
         uses: sarisia/actions-status-discord@v1
         with:
           webhook:  ${{ secrets.DISCORD_WEBHOOK }}
-          color: 0x28e1ff
           nodetail: true
           color: 0xff9300
           description: |
