@@ -1,0 +1,19 @@
+name: Sync Chunk Job
+
+on:
+  workflow_dispatch:
+
+jobs:
+  sched-job-0:
+    runs-on: ubuntu-latest
+    steps:
+    
+      - name: Noti Fail
+        uses: sarisia/actions-status-discord@v1
+        with:
+          webhook:  ${{ secrets.DISCORD_WEBHOOK }}
+          color: 0x28e1ff
+          nodetail: true
+          color: 0xff9300
+          description: |
+            test @koromo
