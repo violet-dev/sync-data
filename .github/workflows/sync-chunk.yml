@@ -84,3 +84,4 @@ jobs:
           description: |
             Chunk Update Fail
             Post: ${{ steps.beforechunk.outputs.release }}
+            CI Log: [${{ github.ref }} / ${{ github.sha }}](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})
