@@ -56,7 +56,7 @@ jobs:
           branch: 'master'
           github_token: $
 
-      - id: afterchunk download test
+      - id: afterchunk
         uses: pozetroninc/github-action-get-latest-release@master
         with:
           repository: project-violet/chunk
