@@ -25,6 +25,7 @@ jobs:
         uses: pozetroninc/github-action-get-latest-release@master
         with:
           repository: project-violet/chunk
+          token: ${{ secrets.GITHUB_TOKEN }}
         
       - name: 'Get Previous tag'
         id: previoustag
@@ -55,10 +56,11 @@ jobs:
           branch: 'master'
           github_token: $
 
-      - id: afterchunk
+      - id: afterchunk (download test)
         uses: pozetroninc/github-action-get-latest-release@master
         with:
           repository: project-violet/chunk
+          token: ${{ secrets.GITHUB_TOKEN }}
         
       - name: Noti Success
         if: success()
