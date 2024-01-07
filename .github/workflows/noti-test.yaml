@@ -14,6 +14,6 @@ jobs:
           webhook:  ${{ secrets.DISCORD_WEBHOOK }}
           nodetail: true
           color: 0xff9300
-          content: "@koromo"
+          content: "<@614104830738169877>"
           description: |
             test
