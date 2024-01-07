@@ -78,6 +78,7 @@ jobs:
           webhook:  ${{ secrets.DISCORD_WEBHOOK }}
           nodetail: true
           color: 0xff9300
+          content: "<@614104830738169877>"
           description: |
-            Chunk Update Fail @koromo
+            Chunk Update Fail
             Post: ${{ steps.beforechunk.outputs.release }}
