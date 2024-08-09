@@ -27,6 +27,7 @@ jobs:
           sudo apt-get install p7zip
           chmod 777 hsync
           wget https://github.com/violet-dev/sync-data/releases/download/${{ steps.previoustag.outputs.tag }}/data.db
+          export COOKIE="ipb_member_id=2742770; ipb_pass_hash=622fcc2be82c922135bb0516e0ee497d; sl=dm_2; sk=t8inbzaqn45ttyn9f78eanzuqizh; igneous=hez0uu1qwsa7r91eqpt"
           python3 sync-db.py ${{ secrets.TOKEN }}
       - name: Revision
         run: |
