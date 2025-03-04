@@ -2335,3 +2335,4 @@ chunk 1741041059 https://github.com/violet-dev/chunk/releases/download/174104105
 chunk 1741041059 https://github.com/violet-dev/chunk/releases/download/1741041059/data-638766378598195064.db 40960
 chunk 1741044686 https://github.com/violet-dev/chunk/releases/download/1741044686/data-638766414859781904.json 63795
 chunk 1741044686 https://github.com/violet-dev/chunk/releases/download/1741044686/data-638766414859781904.db 49152
+db 1741050564 https://github.com/violet-dev/db/releases/download/2025.03.04/rawdata
